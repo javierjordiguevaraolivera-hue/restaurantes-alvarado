@@ -20,8 +20,8 @@ const menu = [
     price: "$16",
     description: "Crema de aji amarillo con pollo deshilachado, arroz y papa.",
     image:
-      "https://upload.wikimedia.org/wikipedia/commons/2/20/Aji_de_Gallina_%2848835985356%29.jpg",
-    credit: "F Delventhal / Wikimedia Commons",
+      "https://commons.wikimedia.org/wiki/Special:FilePath/Aj%C3%AD%20de%20gallina%20-%20Tradicional.jpg",
+    credit: "Wikimedia Commons",
   },
   {
     name: "Causa limena",
@@ -34,9 +34,8 @@ const menu = [
     name: "Rocoto relleno",
     price: "$19",
     description: "Rocoto al horno con relleno sazonado, queso y guarnicion clasica.",
-    image:
-      "https://upload.wikimedia.org/wikipedia/commons/a/ae/Rocoto_relleno_arequipe%C3%B1o.jpg",
-    credit: "Angel Olin / Wikimedia Commons",
+    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Rocoto%20relleno.jpg",
+    credit: "Wikimedia Commons",
   },
   {
     name: "Lomo saltado",
@@ -119,8 +118,6 @@ function JsonLd() {
 }
 
 export default function Home() {
-  const phoneHref = `tel:${restaurant.phone.replaceAll(" ", "")}`;
-  const mailHref = `mailto:${restaurant.email}`;
   const featuredDish = menu[0];
 
   return (
@@ -141,11 +138,8 @@ export default function Home() {
             <a href="#menu" className="hover:text-[#b63224]">
               Menu
             </a>
-            <a href="#ubicacion" className="hover:text-[#b63224]">
-              Ubicacion
-            </a>
-            <a href={phoneHref} className="text-[#b63224] hover:text-[#22201c]">
-              {restaurant.phone}
+            <a href="#footer" className="hover:text-[#b63224]">
+              Contacto
             </a>
           </nav>
         </div>
@@ -171,16 +165,11 @@ export default function Home() {
               Ver menu
             </a>
             <a
-              href={mailHref}
+              href="#footer"
               className="inline-flex h-12 items-center justify-center rounded-sm border border-[#22201c] px-7 text-sm font-black uppercase tracking-[0.14em] hover:border-[#b63224] hover:text-[#b63224]"
             >
               Contactar
             </a>
-          </div>
-          <div className="mt-8 grid gap-2 text-sm font-bold text-[#5f574d]">
-            <span>{restaurant.address}</span>
-            <span>{restaurant.email}</span>
-            <span>{restaurant.domain}</span>
           </div>
         </div>
 
@@ -217,7 +206,7 @@ export default function Home() {
             </div>
             <p className="max-w-md text-sm leading-6 text-[#6d665d]">
               Precios en USD. Para pedidos, reservas o informacion legal del negocio,
-              contactanos directamente.
+              revisa el footer.
             </p>
           </div>
 
@@ -251,43 +240,17 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="ubicacion" className="bg-[#22201c] py-14 text-white">
-        <div className="mx-auto grid max-w-6xl gap-8 px-4 sm:px-6 md:grid-cols-[0.9fr_1.1fr] lg:px-8">
-          <div>
-            <p className="text-xs font-black uppercase tracking-[0.3em] text-[#ffd27f]">
-              Contacto
-            </p>
-            <h2 className="mt-3 text-4xl font-black uppercase leading-none">
-              Estamos en Orlando.
-            </h2>
-          </div>
-          <div className="grid gap-4 text-sm leading-7 text-[#f4e7d3] sm:grid-cols-2">
-            <address className="not-italic">
-              <strong className="block text-white">{restaurant.name}</strong>
-              {restaurant.address}
-              <br />
-              Dominio: {restaurant.domain}
-            </address>
-            <div className="flex flex-col gap-2 font-bold">
-              <a href={phoneHref} className="hover:text-[#ffd27f]">
-                {restaurant.phone}
-              </a>
-              <a href={mailHref} className="hover:text-[#ffd27f]">
-                {restaurant.email}
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <footer className="bg-[#151410] px-4 py-8 text-xs font-semibold uppercase tracking-[0.16em] text-[#cfc3b2] sm:px-6 lg:px-8">
+      <footer
+        id="footer"
+        className="bg-[#151410] px-4 py-8 text-xs font-semibold uppercase tracking-[0.16em] text-[#cfc3b2] sm:px-6 lg:px-8"
+      >
         <div className="mx-auto flex max-w-6xl flex-col gap-3 md:flex-row md:items-center md:justify-between">
           <p>
-            © 2026 {restaurant.name}. Informacion legal, direccion y contacto
+            (c) 2026 {restaurant.name}. Informacion legal, direccion y contacto
             oficial.
           </p>
           <p>
-            {restaurant.address} · {restaurant.phone} · {restaurant.email}
+            {restaurant.address} | {restaurant.phone} | {restaurant.email}
           </p>
         </div>
       </footer>
